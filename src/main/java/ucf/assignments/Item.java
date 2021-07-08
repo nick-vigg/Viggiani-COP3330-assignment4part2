@@ -5,37 +5,36 @@
 package ucf.assignments;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Item {
     private boolean itemStatus;
     private String itemDescription;
     private LocalDate itemDueDate;
 
-    public void getItemStatus(){
+    public void setItemStatus(boolean itemStatus){
         //use GUI to set status from User
         this.itemStatus = itemStatus;
     }
 
-    public boolean setItemStatus(boolean itemStatus){
+    public boolean getItemStatus(){
         return itemStatus;
     }
 
-    public void getItemDescription(){
-        //User sets description from GUI
+    public void setItemDescription(String itemDescription){
+        //use GUI to set Description from User
         this.itemDescription = itemDescription;
     }
 
-    public String setItemDescription(String itemDescription){
+    public String getItemDescription(){
         return itemDescription;
     }
 
-    public void getItemDueDate(){
-        //User sets due date from GUI DatePicker
+    public void setItemDueDate(LocalDate itemDueDate){
+        //use GUI to set Date from User
         this.itemDueDate = itemDueDate;
     }
 
-    public LocalDate setItemDueDate(LocalDate itemDueDate){
+    public LocalDate getItemDueDate(){
         return itemDueDate;
     }
 

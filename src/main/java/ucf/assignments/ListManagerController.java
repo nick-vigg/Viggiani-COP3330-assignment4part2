@@ -1,6 +1,9 @@
 package ucf.assignments;
 
 import javafx.application.Application;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +17,7 @@ import java.util.Date;
 
 public class ListManagerController {
     private Item item = new Item();
+    private ToDoList itemList = new ToDoList();
     @FXML
     private ListView<Item> toDoListItems;
 
@@ -49,12 +53,16 @@ public class ListManagerController {
         item.getItemStatus();
         item.getItemDueDate();
         item.getItemDescription();
+        itemList.addItem(item);
+
     }
 
     public void clearButtonIsClicked(ActionEvent actionEvent) {
+        itemList.clearList();
     }
 
     public void removeButtonIsClicked(ActionEvent actionEvent) {
+        itemList.removeItem(item);
     }
 
     public void setItemStatus(ActionEvent actionEvent) {
@@ -77,5 +85,10 @@ public class ListManagerController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         fileChooser.showOpenDialog(openButton.getScene().getWindow());
+    }
+
+    public void setToDoListItems(){
+        //ObservableList<Item> list = FXCollections.observableArrayList(itemList.getItems());
+        //toDoListItems.setItems(list);
     }
 }

@@ -15,21 +15,32 @@ public class ToDoList {
         //Title is returned
         return toDoTitle;
     }
-    public ArrayList<Item> getItems(ArrayList<Item> items){
-        return items;
+
+    public void getTitle(){
+        this.toDoTitle = toDoTitle;
     }
 
-    public ArrayList<Item> addItem(ArrayList<Item> items, Item item){
+    public void getItems(){
+        this.items = items;
+    }
+
+    public ArrayList<Item> addItem(Item item){
         //User inputs item description
         //then the user clicks the add button
         //a to-do-list is returned with the new item in the list
+        this.items.add(item);
         return items;
     }
 
-    public ArrayList<Item> removeItem(ArrayList<Item> items, Item item){
+    public ArrayList<Item> removeItem(Item item){
         //User clicks item from displayed to-do-list
         //User clicks delete button
         //a to-do-list is returned with the item removed from the list
+        this.items.remove(item);
         return items;
+    }
+
+    public void clearList(){
+        this.items.clear();
     }
 }

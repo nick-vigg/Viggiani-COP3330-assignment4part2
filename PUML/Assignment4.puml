@@ -19,11 +19,14 @@ removeItem()
 class Item {
 - itemStatus : boolean
 - itemDescription : String
-- itemDueDate : String
+- itemDueDate : LocalDate
 
-editDescription()
-editStatus()
-editDueDate()
+getItemStatus()
+setItemStatus()
+getItemDescription()
+setItemDescription()
+getItemDueDate()
+setItemDueDate()
 }
 
 class ListManager {
