@@ -9,8 +9,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 
 import static javafx.application.Application.launch;
@@ -18,26 +22,17 @@ import static javafx.application.Application.launch;
 public class App extends Application{
     @Override
     public void start(Stage stage) {
-        Parent root1 = null;
-        Parent root2 = null;
         try {
-            root1 = FXMLLoader.load(getClass().getResource("ass4.fxml"));
-            Scene scene1 = new Scene(root1);
-            stage.setTitle("To-Do-Lists");
-            stage.setScene(scene1);
+            Parent root = FXMLLoader.load(getClass().getResource("ListManager.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("List Manager");
             stage.show();
-           /* root2 = FXMLLoader.load(getClass().getResource("item.fxml"));
-            Scene scene2 = new Scene(root2);
-            stage.setTitle("Items");
-            stage.setScene(scene2);
-            stage.show(); */
-
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-
     }
-    public static void main(String[] args) { launch(args); }
+    public static void main(String[] args) { Application.launch(args); }
 
 }
