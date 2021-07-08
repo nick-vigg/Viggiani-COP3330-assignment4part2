@@ -9,12 +9,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.util.Date;
 
 public class ListManagerController {
+    private Item item = new Item();
     @FXML
-    private ListView<?> toDoListItems;
+    private ListView<Item> toDoListItems;
 
     @FXML
     private Button addButton;
@@ -45,6 +46,9 @@ public class ListManagerController {
 
 
     public void addButtonIsClicked(ActionEvent actionEvent) {
+        item.getItemStatus();
+        item.getItemDueDate();
+        item.getItemDescription();
     }
 
     public void clearButtonIsClicked(ActionEvent actionEvent) {
@@ -54,18 +58,24 @@ public class ListManagerController {
     }
 
     public void setItemStatus(ActionEvent actionEvent) {
+        if (isComplete.isSelected()){
+            item.setItemStatus(true);
+        } else {
+            item.setItemStatus(false);
+        }
     }
 
     public void setItemDue(ActionEvent actionEvent) {
+        item.setItemDueDate((itemDue.getValue()));
     }
 
     public void setItemDescription(ActionEvent actionEvent) {
+        item.setItemDescription(itemDescription.getText());
     }
 
     public void openButtonIsClicked(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         fileChooser.showOpenDialog(openButton.getScene().getWindow());
-
     }
 }

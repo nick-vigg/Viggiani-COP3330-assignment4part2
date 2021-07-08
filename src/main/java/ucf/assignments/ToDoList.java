@@ -15,6 +15,9 @@ public class ToDoList {
         //Title is returned
         return toDoTitle;
     }
+    public ArrayList<Item> getItems(ArrayList<Item> items){
+        return items;
+    }
 
     public ArrayList<Item> addItem(ArrayList<Item> items, Item item){
         //User inputs item description

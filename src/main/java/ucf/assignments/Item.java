@@ -4,30 +4,38 @@
  */
 package ucf.assignments;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Item {
     private boolean itemStatus;
     private String itemDescription;
-    private Date itemDueDate;
+    private LocalDate itemDueDate;
 
-    public boolean editStatus(boolean itemStatus){
-        //Controller determines if item is marked as complete
-        //if the item is marked
-        //then the item is complete
-        //if not then the item is marked incomplete
-        return false;
+    public void getItemStatus(){
+        //use GUI to set status from User
+        this.itemStatus = itemStatus;
     }
 
-    public String editDescription(String itemDescription){
-        //User will type the description to itemDescription
-        //The description is returned
-        return null;
+    public boolean setItemStatus(boolean itemStatus){
+        return itemStatus;
     }
 
-    public Date editDueDate(Date itemDueDate){
-        //User will select a date
-        //The date will be returned
+    public void getItemDescription(){
+        //User sets description from GUI
+        this.itemDescription = itemDescription;
+    }
+
+    public String setItemDescription(String itemDescription){
+        return itemDescription;
+    }
+
+    public void getItemDueDate(){
+        //User sets due date from GUI DatePicker
+        this.itemDueDate = itemDueDate;
+    }
+
+    public LocalDate setItemDueDate(LocalDate itemDueDate){
         return itemDueDate;
     }
 

@@ -8,13 +8,6 @@ class App {
 + start()
 }
 
-class Lists{
--lists[] : ArrayList<ToDoList>
--listTitle : String
-addList()
-removeList()
-}
-
 class ToDoList {
 - toDoTitle : String
 - items[] : ArrayList<Item>
@@ -33,23 +26,31 @@ editStatus()
 editDueDate()
 }
 
-class ItemController{
-addItemButtonClicked()
-itemDueDateSet()
-itemDescriptionSet()
-isCompleteSet()
-}
-class ListController{
-addListButtonClicked()
-deleteButtonClicked()
-displayListButtonClicked()
+class ListManager {
+- openButton : Button
+- addButton : Button
+- removeButton : Button
+- clearButton : Button
+- toDoListItems : ListView<Item>
+- completeItems :ListView<Item>
+- showCompleteItems : RadioButton
+- itemDescription : TextField
+- itemDue : DatePicker
+- isComplete : RadioButton
+
+openButtonIsClicked(ActionEvent actionEvent)
+addButtonIsClicked(ActionEvent actionEvent)
+removeButtonIsClicked(ActionEvent actionEvent)
+clearButtonIsClicked(ActionEvent actionEvent)
+setItemDescription(ActionEvent actionEvent)
+setItemDue(ActionEvent actionEvent)
+setItemStatus(ActionEvent actionEvent)
 }
 
 javafx.Application <|- App
-App *-- Lists
-Lists <-- ToDoList
+App *-- ToDoList
 ToDoList o-- Item
-Item - ItemController
-Lists - ListController
+ListManager - Item
+
 
 @enduml
