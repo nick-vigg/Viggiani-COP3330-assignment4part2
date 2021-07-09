@@ -11,9 +11,13 @@ class App {
 class ToDoList {
 - toDoTitle : String
 - items[] : ArrayList<Item>
+
 setTitle()
+getTitle()
 addItem()
 removeItem()
+clearList()
+getItems()
 }
 
 class Item {
