@@ -17,7 +17,9 @@ getTitle()
 addItem()
 removeItem()
 clearList()
-getItems()
+getTitles()
+isComplete()
+isIncomplete()
 }
 
 class Item {
@@ -34,12 +36,8 @@ setItemDueDate()
 }
 
 class ListManager {
-- openButton : Button
-- addButton : Button
-- removeButton : Button
-- clearButton : Button
-- toDoListItems : ListView<Item>
-- completeItems :ListView<Item>
+- toDoListItems : ListView<String>
+- completeItems :ListView<String>
 - showCompleteItems : RadioButton
 - itemDescription : TextField
 - itemDue : DatePicker
@@ -49,9 +47,8 @@ openButtonIsClicked(ActionEvent actionEvent)
 addButtonIsClicked(ActionEvent actionEvent)
 removeButtonIsClicked(ActionEvent actionEvent)
 clearButtonIsClicked(ActionEvent actionEvent)
-setItemDescription(ActionEvent actionEvent)
-setItemDue(ActionEvent actionEvent)
 setItemStatus(ActionEvent actionEvent)
+setToDoListItems()
 }
 
 javafx.Application <|- App

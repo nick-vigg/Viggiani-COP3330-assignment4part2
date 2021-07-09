@@ -8,21 +8,17 @@ import java.util.ArrayList;
 
 public class ToDoList {
     private String toDoTitle;
-    private ArrayList<Item> items;
+    private ArrayList<Item> items = new ArrayList<>();
 
-    public String setTitle(String toDoTitle){
-        //User inputs a title
-        //Title is returned
-        return toDoTitle;
-    }
-
-    public void getTitle(){
+    public void setTitle(String toDoTitle){
+        //user inputs Title from GUI
         this.toDoTitle = toDoTitle;
     }
 
-    public void getItems(){
-        this.items = items;
+    public String getTitle(){
+        return toDoTitle;
     }
+
 
     public ArrayList<Item> addItem(Item item){
         //User inputs item description
@@ -42,5 +38,38 @@ public class ToDoList {
 
     public void clearList(){
         this.items.clear();
+    }
+
+    public ArrayList<String> getTitles(){
+        //Loops through to do list of items
+        //creates new list to display titles items
+        ArrayList<String> titleList = new ArrayList<>();
+        for(int i = 0; i < items.size(); i++){
+            titleList.add(items.get(i).getItemDescription());
+        }
+        return titleList;
+    }
+
+    public ArrayList<String> isComplete(){
+        //Loops through to do list of items
+        //creates new list to display titles of complete items
+        ArrayList<String> titleList = new ArrayList<>();
+        for(int i = 0; i < items.size(); i++){
+            if(items.get(i).getItemStatus()){
+                titleList.add(items.get(i).getItemDescription());
+            }
+        }
+        return titleList;
+    }
+    public ArrayList<String> isIncomplete(){
+        //Loops through to do list of items
+        //creates new list to display titles of incomplete items
+        ArrayList<String> titleList = new ArrayList<>();
+        for(int i = 0; i < items.size(); i++){
+            if(!items.get(i).getItemStatus()){
+                titleList.add(items.get(i).getItemDescription());
+            }
+        }
+        return titleList;
     }
 }

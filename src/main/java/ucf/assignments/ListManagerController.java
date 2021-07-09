@@ -1,34 +1,16 @@
 package ucf.assignments;
 
-import javafx.application.Application;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import java.io.IOException;
-import java.util.Date;
 
 public class ListManagerController {
-    private Item item = new Item();
     private ToDoList itemList = new ToDoList();
     @FXML
-    private ListView<Item> toDoListItems;
-
-    @FXML
-    private Button addButton;
-
-    @FXML
-    private Button clearButton;
-
-    @FXML
-    private Button removeButton;
+    private ListView<String> toDoListItems;
 
     @FXML
     private TextField itemDescription;
@@ -43,17 +25,22 @@ public class ListManagerController {
     private RadioButton showCompleteItems;
 
     @FXML
-    private ListView<?> completeItems;
+    private ListView<String> completeItems;
 
     @FXML
     private Button openButton;
 
-
     public void addButtonIsClicked(ActionEvent actionEvent) {
-        item.getItemStatus();
-        item.getItemDueDate();
-        item.getItemDescription();
+        Item item = new Item();
+        item.setItemDescription(itemDescription.getText());
+        item.setItemDueDate((itemDue.getValue()));
+        if (isComplete.isSelected()){
+            item.setItemStatus(true);
+        } else {
+            item.setItemStatus(false);
+        }
         itemList.addItem(item);
+        setToDoListItems();
 
     }
 
@@ -62,23 +49,17 @@ public class ListManagerController {
     }
 
     public void removeButtonIsClicked(ActionEvent actionEvent) {
-        itemList.removeItem(item);
+        //itemList.removeItem(item);
     }
 
     public void setItemStatus(ActionEvent actionEvent) {
-        if (isComplete.isSelected()){
-            item.setItemStatus(true);
+        if (showCompleteItems.isSelected()){
+            ObservableList<String> list = FXCollections.observableArrayList(itemList.isComplete());
+            completeItems.setItems(list);
         } else {
-            item.setItemStatus(false);
+            ObservableList<String> list = FXCollections.observableArrayList(itemList.isIncomplete());
+            completeItems.setItems(list);
         }
-    }
-
-    public void setItemDue(ActionEvent actionEvent) {
-        item.setItemDueDate((itemDue.getValue()));
-    }
-
-    public void setItemDescription(ActionEvent actionEvent) {
-        item.setItemDescription(itemDescription.getText());
     }
 
     public void openButtonIsClicked(ActionEvent actionEvent) {
@@ -88,7 +69,9 @@ public class ListManagerController {
     }
 
     public void setToDoListItems(){
-        //ObservableList<Item> list = FXCollections.observableArrayList(itemList.getItems());
-        //toDoListItems.setItems(list);
+        ObservableList<String> titleList = FXCollections.observableArrayList(itemList.getTitles());
+        toDoListItems.setItems(titleList);
+        ObservableList<String> completeList = FXCollections.observableArrayList(itemList.isIncomplete());
+        completeItems.setItems(completeList);
     }
 }
