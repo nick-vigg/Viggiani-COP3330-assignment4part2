@@ -4,23 +4,24 @@
  */
 package ucf.assignments;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ToDoList {
     private String toDoTitle;
     private ArrayList<Item> items = new ArrayList<>();
 
-    public void setTitle(String toDoTitle){
+    public void setTitle(String toDoTitle) {
         //user inputs Title from GUI
         this.toDoTitle = toDoTitle;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return toDoTitle;
     }
 
 
-    public ArrayList<Item> addItem(Item item){
+    public ArrayList<Item> addItem(Item item) {
         //User inputs item description
         //then the user clicks the add button
         //a to-do-list is returned with the new item in the list
@@ -28,45 +29,65 @@ public class ToDoList {
         return items;
     }
 
-    public ArrayList<Item> removeItem(Item item){
+    public ArrayList<Item> removeItem(int index) {
         //User clicks item from displayed to-do-list
         //User clicks delete button
         //a to-do-list is returned with the item removed from the list
-        this.items.remove(item);
+        this.items.remove(index);
         return items;
     }
 
-    public void clearList(){
+    public void clearList() {
         this.items.clear();
     }
 
-    public ArrayList<String> getTitles(){
+    public ArrayList<String> getTitles() {
         //Loops through to do list of items
         //creates new list to display titles items
         ArrayList<String> titleList = new ArrayList<>();
-        for(int i = 0; i < items.size(); i++){
+        for (int i = 0; i < items.size(); i++) {
             titleList.add(items.get(i).getItemDescription());
         }
         return titleList;
     }
 
-    public ArrayList<String> isComplete(){
+    public ArrayList<LocalDate> getDates() {
+        //Loops through to do list of items
+        //creates new list to display dates of items
+        ArrayList<LocalDate> dateList = new ArrayList<>();
+        for (int i = 0; i < items.size(); i++) {
+            dateList.add(items.get(i).getItemDueDate());
+        }
+        return dateList;
+    }
+    public ArrayList<Boolean> getComplete() {
+        //Loops through to do list of items
+        //creates new list to display dates of items
+        ArrayList<Boolean> completeList = new ArrayList<>();
+        for (int i = 0; i < items.size(); i++) {
+            completeList.add(items.get(i).getItemStatus());
+        }
+        return completeList;
+    }
+
+    public ArrayList<String> isComplete() {
         //Loops through to do list of items
         //creates new list to display titles of complete items
         ArrayList<String> titleList = new ArrayList<>();
-        for(int i = 0; i < items.size(); i++){
-            if(items.get(i).getItemStatus()){
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getItemStatus()) {
                 titleList.add(items.get(i).getItemDescription());
             }
         }
         return titleList;
     }
-    public ArrayList<String> isIncomplete(){
+
+    public ArrayList<String> isIncomplete() {
         //Loops through to do list of items
         //creates new list to display titles of incomplete items
         ArrayList<String> titleList = new ArrayList<>();
-        for(int i = 0; i < items.size(); i++){
-            if(!items.get(i).getItemStatus()){
+        for (int i = 0; i < items.size(); i++) {
+            if (!items.get(i).getItemStatus()) {
                 titleList.add(items.get(i).getItemDescription());
             }
         }

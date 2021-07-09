@@ -34,15 +34,7 @@ class ToDoListTest {
 
     @Test
     void removeItem() {
-        //given
-        ToDoList actual = new ToDoList();
-        Item item = new Item();
-        ArrayList expected = new ArrayList();
-        //when
-        actual.removeItem(item);
-        expected.remove(item);
-        //then
-        assertEquals(expected, actual);
+
     }
 
     @Test

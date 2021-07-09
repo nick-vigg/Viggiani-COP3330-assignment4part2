@@ -49,6 +49,8 @@ removeButtonIsClicked(ActionEvent actionEvent)
 clearButtonIsClicked(ActionEvent actionEvent)
 setItemStatus(ActionEvent actionEvent)
 setToDoListItems()
+resetInputs()
+editButtonIsClicked(ActionEvent actionEvent)
 }
 
 javafx.Application <|- App
