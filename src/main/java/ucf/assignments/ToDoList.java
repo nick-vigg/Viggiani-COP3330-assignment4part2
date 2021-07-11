@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ToDoList {
-    private ArrayList<Item> items = new ArrayList<>();
+    private final ArrayList<Item> items = new ArrayList<>();
 
     public int getSize(){
         return items.size();
@@ -19,20 +19,18 @@ public class ToDoList {
     }
 
 
-    public ArrayList<Item> addItem(Item item) {
+    public void addItem(Item item) {
         //User inputs item description
         //then the user clicks the add button
         //a to-do-list is returned with the new item in the list
         this.items.add(item);
-        return items;
     }
 
-    public ArrayList<Item> removeItem(int index) {
+    public void removeItem(int index) {
         //User clicks item from displayed to-do-list
         //User clicks delete button
         //a to-do-list is returned with the item removed from the list
         this.items.remove(index);
-        return items;
     }
 
     public void clearList() {
@@ -43,8 +41,8 @@ public class ToDoList {
         //Loops through to do list of items
         //creates new list to display titles items
         ArrayList<String> titleList = new ArrayList<>();
-        for (int i = 0; i < items.size(); i++) {
-            titleList.add(items.get(i).getItemDescription());
+        for (Item item : items) {
+            titleList.add(item.getItemDescription());
         }
         return titleList;
     }
@@ -53,8 +51,8 @@ public class ToDoList {
         //Loops through to do list of items
         //creates new list to display dates of items
         ArrayList<LocalDate> dateList = new ArrayList<>();
-        for (int i = 0; i < items.size(); i++) {
-            dateList.add(items.get(i).getItemDueDate());
+        for (Item item : items) {
+            dateList.add(item.getItemDueDate());
         }
         return dateList;
     }
@@ -62,8 +60,8 @@ public class ToDoList {
         //Loops through to do list of items
         //creates new list to display status of items
         ArrayList<Boolean> completeList = new ArrayList<>();
-        for (int i = 0; i < items.size(); i++) {
-            completeList.add(items.get(i).getItemStatus());
+        for (Item item : items) {
+            completeList.add(item.getItemStatus());
         }
         return completeList;
     }
@@ -72,9 +70,9 @@ public class ToDoList {
         //Loops through to do list of items
         //creates new list to display titles of complete items
         ArrayList<String> titleList = new ArrayList<>();
-        for (int i = 0; i < items.size(); i++) {
-            if (items.get(i).getItemStatus()) {
-                titleList.add(items.get(i).getItemDescription());
+        for (Item item : items) {
+            if (item.getItemStatus()) {
+                titleList.add(item.getItemDescription());
             }
         }
         return titleList;
@@ -84,9 +82,9 @@ public class ToDoList {
         //Loops through to do list of items
         //creates new list to display titles of incomplete items
         ArrayList<String> titleList = new ArrayList<>();
-        for (int i = 0; i < items.size(); i++) {
-            if (!items.get(i).getItemStatus()) {
-                titleList.add(items.get(i).getItemDescription());
+        for (Item item : items) {
+            if (!item.getItemStatus()) {
+                titleList.add(item.getItemDescription());
             }
         }
         return titleList;
