@@ -60,7 +60,7 @@ public class ToDoList {
     }
     public ArrayList<Boolean> getComplete() {
         //Loops through to do list of items
-        //creates new list to display dates of items
+        //creates new list to display status of items
         ArrayList<Boolean> completeList = new ArrayList<>();
         for (int i = 0; i < items.size(); i++) {
             completeList.add(items.get(i).getItemStatus());
