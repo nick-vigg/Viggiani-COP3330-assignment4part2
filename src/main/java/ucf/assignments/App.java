@@ -4,26 +4,19 @@
  */
 package ucf.assignments;
 
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.io.FileInputStream;
 import java.io.IOException;
-
-import static javafx.application.Application.launch;
+import java.util.Objects;
 
 public class App extends Application{
     @Override
     public void start(Stage stage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("ListManager.fxml"));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ListManager.fxml")));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("List Manager");

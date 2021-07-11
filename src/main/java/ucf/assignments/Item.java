@@ -25,7 +25,12 @@ public class Item {
 
     public void setItemDescription(String itemDescription){
         //use GUI to set Description from User
-        this.itemDescription = itemDescription;
+        if (itemDescription.length() < 256){
+            this.itemDescription = itemDescription;
+
+        } else {
+            this.itemDescription = itemDescription.substring(0, 256);
+        }
     }
 
     public String getItemDescription(){
