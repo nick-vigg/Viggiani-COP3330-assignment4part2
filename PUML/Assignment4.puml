@@ -51,6 +51,7 @@ setItemStatus(ActionEvent actionEvent)
 setToDoListItems()
 resetInputs()
 editButtonIsClicked(ActionEvent actionEvent)
+saveButtonIsClicked(ActionEvent actionEvent)
 }
 
 javafx.Application <|- App

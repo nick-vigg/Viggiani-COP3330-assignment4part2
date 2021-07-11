@@ -7,9 +7,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.time.LocalDate;
 
 public class ListManagerController {
+    private static final ObservableList<Item> observableItemList = FXCollections.observableArrayList();
     private final ToDoList itemList = new ToDoList();
     @FXML
     private ListView<String> toDoListItems;
@@ -76,10 +78,20 @@ public class ListManagerController {
     }
 
     public void openButtonIsClicked(ActionEvent actionEvent) {
-        //allows for user input to be saved to or loaded from a file
+        //allows for user input to be loaded from a file
+        //Filters the openable files to only .txt files
         FileChooser fileChooser = new FileChooser();
+        FileManager fileManager = new FileManager();
+        FileChooser.ExtensionFilter extFilter =
+                new FileChooser.ExtensionFilter("TEXT files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
         fileChooser.setTitle("Open Resource File");
-        fileChooser.showOpenDialog(openButton.getScene().getWindow());
+        File file = fileChooser.showOpenDialog(null);
+        String path = file.getAbsolutePath();
+        if (path != null && path != "") {
+            FileManager.writeToFile(path, observableItemList);
+        }
+
     }
 
     public void setToDoListItems() {
@@ -109,5 +121,21 @@ public class ListManagerController {
         isComplete.setSelected(itemList.getComplete().get(toDoListItems.getSelectionModel().getSelectedIndex()));
         itemList.removeItem(toDoListItems.getSelectionModel().getSelectedIndex());
         setToDoListItems();
+    }
+
+    public void saveButtonIsClicked(ActionEvent actionEvent) {
+        //allows for user input to be saved to a file
+        FileChooser fileChooser = new FileChooser();
+        FileManager fileManager = new FileManager();
+        FileChooser.ExtensionFilter extFilter =
+                new FileChooser.ExtensionFilter("TEXT files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
+        fileChooser.setTitle("Open Resource File");
+        File file = fileChooser.showSaveDialog(null);
+        String path = file.getAbsolutePath();
+        if (path != null && path != "") {
+            FileManager.writeToFile(path, observableItemList);
+        }
+
     }
 }
