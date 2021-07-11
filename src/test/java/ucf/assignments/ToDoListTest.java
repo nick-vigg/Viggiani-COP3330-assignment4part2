@@ -9,17 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class ToDoListTest {
 
     @Test
-    void getTitle() {
-        //given
-        ToDoList list = new ToDoList();
-        String title = "Title";
-        //when
-        list.setTitle("Title");
-        //then
-        assertEquals(title, list.getTitle());
-    }
-
-    @Test
     void addItem() {
         //given
         ToDoList actual = new ToDoList();

@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ItemTest {
 
     @Test
-    void setItemStatusTrue() {
+    void getItemStatusTrue() {
         //given
         Item item = new Item();
         boolean status = true;
@@ -23,7 +23,7 @@ class ItemTest {
     }
 
     @Test
-    void setItemStatusFalse() {
+    void getItemStatusFalse() {
         //given
         Item item = new Item();
         boolean status = false;
@@ -34,7 +34,7 @@ class ItemTest {
     }
 
     @Test
-    void setItemDescription() {
+    void getItemDescription() {
         //given
         Item item = new Item();
         String desc = "Item Description";
@@ -45,7 +45,7 @@ class ItemTest {
     }
 
     @Test
-    void setItemDueDate() {
+    void getItemDueDate() {
         //given
         Item item = new Item();
         LocalDate date = LocalDate.of(2002, 03, 07);

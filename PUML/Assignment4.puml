@@ -33,6 +33,7 @@ getItemDescription()
 setItemDescription()
 getItemDueDate()
 setItemDueDate()
+fileToItem()
 }
 
 class ListManager {
@@ -54,10 +55,19 @@ editButtonIsClicked(ActionEvent actionEvent)
 saveButtonIsClicked(ActionEvent actionEvent)
 }
 
+class FileManager{
+promptSaveFile()
+promptOpenFile()
+writeToFile()
+readFromFile()
+}
+
+
 javafx.Application <|- App
 App *-- ToDoList
 ToDoList o-- Item
 ListManager - Item
+FileManager - ListManager
 
 
 @enduml

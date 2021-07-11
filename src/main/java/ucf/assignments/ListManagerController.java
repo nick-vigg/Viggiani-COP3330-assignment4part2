@@ -5,13 +5,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.stage.FileChooser;
-
-import java.io.File;
+import javafx.scene.control.TextField;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class ListManagerController {
-    private static final ObservableList<Item> observableItemList = FXCollections.observableArrayList();
     private final ToDoList itemList = new ToDoList();
     @FXML
     private ListView<String> toDoListItems;
@@ -31,8 +29,7 @@ public class ListManagerController {
     @FXML
     private ListView<String> completeItems;
 
-    @FXML
-    private Button openButton;
+
 
     @FXML
     private ListView<LocalDate> toDoListDates;
@@ -48,6 +45,21 @@ public class ListManagerController {
         itemList.addItem(item);
         setToDoListItems();
         resetInputs();
+    }
+
+    public void openButtonIsClicked(ActionEvent actionEvent) {
+        //allows for user input to be loaded from a file
+        //Filters the openable files to only .txt files;
+        String path = FileManager.promptOpenFile();
+        ArrayList<String> fileList = FileManager.readFromFile(path);
+        if (path != null && path != ""){
+            for (int i = 0; i < fileList.size(); i++){
+                Item item = new Item();
+                item.fileToItem(fileList, i);
+                itemList.addItem(item);
+            }
+        }
+        setToDoListItems();
     }
 
     public void clearButtonIsClicked(ActionEvent actionEvent) {
@@ -77,22 +89,7 @@ public class ListManagerController {
         }
     }
 
-    public void openButtonIsClicked(ActionEvent actionEvent) {
-        //allows for user input to be loaded from a file
-        //Filters the openable files to only .txt files
-        FileChooser fileChooser = new FileChooser();
-        FileManager fileManager = new FileManager();
-        FileChooser.ExtensionFilter extFilter =
-                new FileChooser.ExtensionFilter("TEXT files (*.txt)", "*.txt");
-        fileChooser.getExtensionFilters().add(extFilter);
-        fileChooser.setTitle("Open Resource File");
-        File file = fileChooser.showOpenDialog(null);
-        String path = file.getAbsolutePath();
-        if (path != null && path != "") {
-            FileManager.writeToFile(path, observableItemList);
-        }
 
-    }
 
     public void setToDoListItems() {
         //sets displays for listViews
@@ -125,17 +122,11 @@ public class ListManagerController {
 
     public void saveButtonIsClicked(ActionEvent actionEvent) {
         //allows for user input to be saved to a file
-        FileChooser fileChooser = new FileChooser();
-        FileManager fileManager = new FileManager();
-        FileChooser.ExtensionFilter extFilter =
-                new FileChooser.ExtensionFilter("TEXT files (*.txt)", "*.txt");
-        fileChooser.getExtensionFilters().add(extFilter);
-        fileChooser.setTitle("Open Resource File");
-        File file = fileChooser.showSaveDialog(null);
-        String path = file.getAbsolutePath();
+        String path = FileManager.promptSaveFile();
         if (path != null && path != "") {
-            FileManager.writeToFile(path, observableItemList);
+            FileManager.writeToFile(path, itemList);
         }
 
     }
+
 }

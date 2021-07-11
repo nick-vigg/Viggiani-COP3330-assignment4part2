@@ -5,6 +5,9 @@
 package ucf.assignments;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Item {
     private boolean itemStatus;
@@ -38,4 +41,14 @@ public class Item {
         return itemDueDate;
     }
 
+    public void fileToItem(ArrayList<String> list, int i){
+            String[] splitArray = list.get(i).split("\\|");
+            setItemDescription(splitArray[0].trim());
+            if(splitArray[1].trim().equals("Complete")){
+                setItemStatus(true);
+            } else {
+                setItemStatus(false);
+            }
+            setItemDueDate(LocalDate.parse(splitArray[2].trim()));
+        }
 }

@@ -8,16 +8,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ToDoList {
-    private String toDoTitle;
     private ArrayList<Item> items = new ArrayList<>();
 
-    public void setTitle(String toDoTitle) {
-        //user inputs Title from GUI
-        this.toDoTitle = toDoTitle;
+    public int getSize(){
+        return items.size();
     }
 
-    public String getTitle() {
-        return toDoTitle;
+    public Item getItem(int i){
+        return items.get(i);
     }
 
 
